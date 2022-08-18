@@ -1,7 +1,7 @@
 import React from "react";
 
 import Container from "react-bootstrap/Container";
-import NavbarComponent from "../components/NavbarComponent";
+
 import Footer from "../components/Footer";
 
 import "../assets/css/home.css";
@@ -9,7 +9,6 @@ import "../assets/css/home.css";
 const Home = () => {
   return (
     <div>
-      <NavbarComponent />
       <Container className="main-content py-5">
         <h2 className="mail-title">ITS CERTIFICADOS</h2>
         <h4 className="main-subtitle my-4">
