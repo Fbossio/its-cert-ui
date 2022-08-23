@@ -8,7 +8,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import logo from "../assets/img/its_logo.png";
 import "../assets/css/navbar.css";
 
-const NavbarComponent = () => {
+const NavbarComponent = ({ onChange, onSubmit, code }) => {
   return (
     <Navbar ccollapseOnSelect expand="lg">
       <Container>
@@ -19,14 +19,17 @@ const NavbarComponent = () => {
         </LinkContainer>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-evenly">
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={onSubmit}>
             <Form.Control
               type="search"
               placeholder="Buscar"
               className="me-2"
               aria-label="Search"
+              onChange={onChange}
+              value={code}
             />
-            <Button variant="outline-success">
+
+            <Button variant="outline-success" type="submit">
               <i class="fas fa-search"></i>
             </Button>
           </Form>
