@@ -1,3 +1,9 @@
 .clave {
+    font-size: small;
     font-weight: bold;
+    text-transform: uppercase;
+}
+
+.valor {
+    font-size:x-small;
 }

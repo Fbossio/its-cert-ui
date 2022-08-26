@@ -10,7 +10,7 @@ const Footer = () => {
       <CDBBox
         display="flex"
         flex="column"
-        className="mx-auto py-5"
+        className="mx-auto py-3"
         style={{ width: "90%" }}
       >
         <CDBBox display="flex" justifyContent="between" className="flex-wrap">

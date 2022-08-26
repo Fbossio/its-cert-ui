@@ -4,12 +4,12 @@ import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 import certDetailMap from "../utils/listDetailsMap";
 import "../assets/css/listDetails.css";
-const data = require("../assets/data.json");
 
 const ListDetails = (props) => {
   //const [info, setInfo] = useState(certData.data);
-  const [info, setInfo] = useState(props.props.data);
-  const [hasChanged, setHasChanged] = useState(false);
+
+  const [info, setInfo] = useState({});
+
   /*
   useEffect(() => {
     setInfo(certData);
@@ -18,16 +18,24 @@ const ListDetails = (props) => {
   }, [certData]);
   */
 
-  useEffect(() => {
-    //console.log(props.props.data);
-    console.log("Hook dentro de listdetail alcanzado");
-    setInfo(props.props.data);
-    setHasChanged(true);
-    console.log(hasChanged);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasChanged]);
+  const { certData, loaded } = props.props.props;
 
-  const keys = Object.keys(info);
+  useEffect(() => {
+    setInfo(certData.data);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loaded]);
+
+  const info_obj = {
+    Código: info.codigo,
+    Titular: info.titular,
+    Curso: info.curso,
+    Instructor: info.instructor,
+    "Número de horas": info.numero_horas,
+    "Fecha de emisión": info.fecha_emision,
+  };
+
+  const keys = Object.keys(info_obj);
 
   return (
     <ListGroup>
@@ -35,10 +43,10 @@ const ListDetails = (props) => {
         <ListGroup.Item key={idx}>
           <Row>
             <Col>
-              <span className="clave">{certDetailMap[x]}</span>:
+              <span className="clave">{x}</span>:
             </Col>
             <Col>
-              <span className="valor">{info[x]}</span>
+              <span className="valor">{info_obj[x]}</span>
             </Col>
           </Row>
         </ListGroup.Item>

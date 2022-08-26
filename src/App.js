@@ -14,8 +14,6 @@ const App = () => {
 
   useEffect(() => {
     if (loaded) {
-      console.log("Se ha recargado");
-      //console.log(certData);
       navegate(`details/${code}`);
       setCode("");
       setLoaded(false);
@@ -46,7 +44,10 @@ const App = () => {
       <NavbarComponent onChange={onChange} onSubmit={onSubmit} code={code} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="details/:id" element={<Details props={certData} />} />
+        <Route
+          path="details/:id"
+          element={<Details props={{ certData: certData, loaded: loaded }} />}
+        />
       </Routes>
     </>
   );
