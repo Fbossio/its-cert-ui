@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import axios from "axios";
-import NavbarComponent from "./components/NavbarComponent";
-import Home from "./pages/Home";
-import Details from "./pages/Details";
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import NavbarComponent from './components/NavbarComponent';
+import Home from './pages/Home';
+import Details from './pages/Details';
 
 const App = () => {
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState('');
   const [certData, setCertData] = useState({});
   const [loaded, setLoaded] = useState(false);
 
@@ -15,7 +15,7 @@ const App = () => {
   useEffect(() => {
     if (loaded) {
       navegate(`details/${code}`);
-      setCode("");
+      setCode('');
       setLoaded(false);
     }
   }, [loaded]);
@@ -27,12 +27,12 @@ const App = () => {
     e.preventDefault();
 
     axios
-      .get(`https://its-cert-api.herokuapp.com/api/certificado/${code}`)
+      .get(`https://apicertificado.itsrack.com/api/certificado/${code}`)
       .then((response) => {
         setCertData(response.data);
       })
       .then(() => {
-        console.log("certdata: ", certData);
+        console.log('certdata: ', certData);
       })
       .then(() => {
         setLoaded(true);
